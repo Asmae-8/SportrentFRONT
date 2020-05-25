@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row d-flex justify-content-center" >
+      <router-outlet></router-outlet>
+  </div>
+</div>
+<app-footer></app-footer>
+
+<!-- 
+<div class="col-md-3">
+  <ul class="list-group" *ngIf="categories">
+    <li [ngClass]="currentCategorie==c?'active':''"  (click)="getProductsByCat(c)" class="list-group-item clickable" *ngFor="let c of categories._embedded.categories">
+      {{c.name}}
+    </li>
+  </ul>
+</div>
+
+<h1>Ajout Produit</h1>
+<hr>
+<form #f="ngForm"  (ngSubmit)="onSaveProduct(f.value)" novalidate>
+  <div class="container">
+
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="form-group">
+        <label class="control-label"><b>Nom du Produit</b></label>
+        <input class="form-control" id="designation"  type="text" placeholder="Entrer le nom de votre produit" name="designation" ngModel required ><br /><br />
+      </div>
+      <div class="form-group">
+        <label class="control-label"><b>Description</b></label>
+        <input class="form-control" id="description" type="text" placeholder="Entrer la description de votre produit" name="description" ngModel required><br /><br />
+      </div>
+      <div class="form-group">
+        <label class="control-label"><b>Prix</b></label>
+        <input class="form-control" id="prix" type="number" placeholder="Entrer le prix de votre produit" name="prix" ngModel required><br /><br />
+      </div>
+      <div class="form-group">
+        <label class="control-label"><b>Image</b></label>
+        <input class="form-control" id="photo" type="text" placeholder="Entrer la photo du produit" name="Image" ngModel required><br /><br />
+      </div>
+
+      <p>En ajoutons un produit vous acceptez notre <a href="#">Règles & Lois</a>.</p><br /><br />
+      <button class="btn btn-success" type="submit" >Ajouter Produit</button>
+
+
+
+      <p>Vous avez déja un compte? <a href="#">Se Connecter?</a>.</p>
+
+     
+    </div>
+  </div>
+</form>
+
+
+
+
+
+</div> -->

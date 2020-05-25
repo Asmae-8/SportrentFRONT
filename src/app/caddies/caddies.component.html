@@ -1,0 +1,30 @@
+
+<div class="panel panel-heading">
+  <div class="panel-heading">Caddies</div>
+  <div class="panel-body">
+    <table class="table table-bordered" *ngIf="caddies != null">
+
+      <tr>
+        <th>ID</th><th>Image</th><th>produit</th><th>Price</th><th></th>
+      </tr>
+      <!--tr *ngFor="let pi of caddyService.getCurrentCaddy().items.values()"-->
+
+      <tr *ngFor="let pi of caddies">
+        <td>{{pi.produit.id}}</td>
+        <img  class="img-thumbnail img-rounded btn" (click)="onProductDetails(pi.produit.id)" [src]="pi.produit.photo">
+        <td>{{pi.produit.name}}</td>
+        <td>{{pi.price}} DH</td>
+
+        <td>
+          <button class="btn btn-danger"  (click)="onRemoveProductFromCaddy(pi)">
+            <span class="glyphicon glyphicon-remove">Remove</span>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">Total</td>
+        <td>{{total |number:'0.2'}} DH</td>
+      </tr>
+    </table>
+  </div>
+</div>

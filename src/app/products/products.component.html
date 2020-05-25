@@ -1,0 +1,121 @@
+<br>
+<div class="row">
+  <div class="col s6 " >
+    <div class="card">
+      <div class="card-body">
+        <div  class="row" style="text-align: center;">
+          <div class="col s12 " >
+            <h2 class="card-title">Chercher un produit</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class= " col-md-6 md-form">
+            <input type="text" id="inputLGEx" class="form-control"[(ngModel)]="searchTerm" (change)="setFilteredItems()">
+            <label for="inputLGEx">Large input</label>
+          </div>
+
+          <div class="col-md-6">
+            <button class="btn btn-sm btn-warning btn-rounded"> <i class="material-icons">chercher</i></button>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="dropdown-menu dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-555">
+
+  <a class="dropdown-item" href="#">Equipement multisport</a>
+  <a class="dropdown-item" routerLink="/categories">Sport Collectifs</a>
+  <a class="dropdown-item" routerLink="/categories">Sport de Raquette</a>
+  <a class="dropdown-item" routerLink="/categories">Musculation et Fitness</a>
+  <a class="dropdown-item" routerLink="/categories">Athlétisme</a>
+  <a class="dropdown-item" routerLink="/categories">Gymnastique</a>
+  <a class="dropdown-item" routerLink="/categories">Sport Aquatiques</a>
+  <a class="dropdown-item" routerLink="/categories">Sport de Combat</a>
+  <a class="dropdown-item" routerLink="/categories">Textile et Bagagerie</a>
+  <a class="dropdown-item" routerLink="/categories">Sante et Bien-etre</a>
+  <a class="dropdown-item" routerLink="/categories">Eveil et Motricite</a>
+</div>
+<div class="container">
+  <div class="col-md-3">
+    <ul class="list-group" *ngIf="categories">
+      <li  *ngFor="let c of categories._embedded.categories">
+        {{c.name}}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-9">
+    <router-outlet>
+
+    </router-outlet>
+  </div>
+</div>
+
+<br>
+<br>
+<div class="container"  *ngIf="products">
+  <div><h3>{{title}}</h3></div>
+  <div class="row " >
+    <div *ngFor="let p of productsAffichees" class="col-md-4 jumbotron">
+      <h2 class="h2-responsive text-center">{{p.name}}</h2>
+      <div class="text-center">
+        <img  class="img-thumbnail img-rounded btn" (click)="onProductDetails(p.id)" [src]="p.photo"  />
+
+
+
+
+
+
+        <!--div *ngIf="isAdmin()"-->
+        <p> <button (click)="onEditPhoto(p)">
+          <span class="glyphicon glyphicon-edit"></span>
+        </button></p>
+        <p *ngIf="editPhoto && currentProduct==p">
+          <textarea [(ngModel)]="linkOfPicture" ></textarea>
+          <button class="btn btn-success" (click)="uploadPhoto(p)">Upload</button>
+          {{progress}}
+        </p>
+        <!--/div-->
+        <div>
+          <span *ngIf="p.promotion">
+            <img  src="assets/images/promos.jpg" class="img-thumbnail img-circle" width="30" height=10px >
+          </span>
+          <span *ngIf="p.selected">
+            <img src="assets/images/favorites.jpg" class="img-thumbnail img-circle" width="30" height=10px>
+          </span>
+          <span *ngIf="p.available">
+            <img src="assets/images/available.jpg" class="img-thumbnail img-circle" width="30" height=10px>
+          </span>
+        </div>
+        <div>
+          <form  #f="ngForm" (ngSubmit)="onAddProductToCaddy(p)">
+            <button>
+              <img src="assets/images/caddy.jpg" class="img-thumbnail img-circle" width="40" height=10px>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class= "text-center">
+        <button class="btn btn-successs" [routerLink]="">
+          <i class="fas fa-house-user"></i>
+
+          <div>
+            <label>Price: {{p.currentPrice|number:'0.00'}} DH</label>
+          </div>
+        </button>
+        <button class="btn btn-successs" [routerLink]="">
+          <i class="fas fa-house-user"></i>
+          <div>
+            <label>State: {{p.state}} </label>
+          </div>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
